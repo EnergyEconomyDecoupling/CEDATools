@@ -41,7 +41,8 @@ test_that("read_cru_cy_file() works", {
 #
 # })
 
-# tmp_2019 <- read_cru_cy_files(cru_cy_metric = "tmp", cru_cy_year = 2019)
+# tmp_2019 <- read_cru_cy_files(cru_cy_folder = file.path(PFUSetup::get_abs_paths()$project_path, "Data", "CEDA Data"),
+#                                                         cru_cy_metric = "tmp", cru_cy_year = 2019)
 #
 # tmx_2019 <- read_cru_cy_files(cru_cy_metric = "tmx", cru_cy_year = 2019)
 #
