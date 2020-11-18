@@ -46,6 +46,6 @@ read_cru_cy_files <- function (cru_cy_metric, cru_cy_year, data) {
 
   data <- do.call(rbind, purrr::map(dirs, read_cru_cy_file)) %>%
     dplyr::left_join(CEDA_mapping, by = "Country") %>%
-    dplyr::relocate(ISO_Country_Code, .after = "Country")
+    dplyr::relocate(PFU_Country_Code, .after = "Country")
 
 }
