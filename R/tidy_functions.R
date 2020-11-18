@@ -7,8 +7,8 @@ library(PFUSetup)
 
 
 # Establishes a function which reads an individual CEDA .per (text) file
-read_ceda_file <- function (ceda_file) {
-  readr::read_table2(ceda_file,
+read_cru_cy_file <- function (cru_cy_file) {
+  readr::read_table2(cru_cy_file,
                      col_types = cols(YEAR = col_double(),
                                       JAN = col_double(), FEB = col_double(),
                                       MAR = col_double(), APR = col_double(),
@@ -22,16 +22,16 @@ read_ceda_file <- function (ceda_file) {
                                       ),
                      skip = 3) %>%
     tibble::tibble() %>%
-    dplyr::mutate(Country = substr(basename(ceda_file), 23, nchar(basename(ceda_file))-8), .before = YEAR)
+    dplyr::mutate(Country = substr(basename(cru_cy_file), 23, nchar(basename(cru_cy_file))-8), .before = YEAR)
 }
 
 
 # Establishes a function which uses read_ceda_file() to read all the CEDA files
 # for a particular metric and binds them into a single tibble
-read_ceda_files <- function (ceda_metric, ceda_year, data) {
+read_cru_cy_files <- function (cru_cy_metric, cru_cy_year, data) {
 
   dest_file = paste0(PFUSetup::get_abs_paths()$project_path,
-                         "/Data/CEDA Data/CEDA_", ceda_year, "/", ceda_metric, sep ="")
+                         "/Data/CEDA Data/CEDA_", cru_cy_year, "/", cru_cy_metric, sep ="")
 
   country_mapping_path <- paste(PFUSetup::get_abs_paths()$project_path,
                                 "/Mapping/Country_Mapping_2020.xlsx", sep = "")
@@ -44,7 +44,7 @@ read_ceda_files <- function (ceda_metric, ceda_year, data) {
 
   dirs = paste0(dest_file, "/", list.files(path = dest_file), sep = "")
 
-  data <- do.call(rbind, purrr::map(dirs, read_ceda_file)) %>%
+  data <- do.call(rbind, purrr::map(dirs, read_cru_cy_file)) %>%
     dplyr::left_join(CEDA_mapping, by = "Country") %>%
     dplyr::relocate(ISO_Country_Code, .after = "Country")
 
