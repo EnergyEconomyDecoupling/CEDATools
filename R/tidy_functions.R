@@ -4,7 +4,6 @@
 # Loads required packages
 library(tidyverse)
 library(PFUSetup)
-library(testthat)
 
 
 # Establishes a function which reads an individual CEDA .per (text) file
@@ -34,9 +33,20 @@ read_ceda_files <- function (ceda_metric, ceda_year, data) {
   dest_file = paste0(PFUSetup::get_abs_paths()$project_path,
                          "/Data/CEDA Data/CEDA_", ceda_year, "/", ceda_metric, sep ="")
 
+  country_mapping_path <- paste(PFUSetup::get_abs_paths()$project_path,
+                                "/Mapping/Country_Mapping_2020.xlsx", sep = "")
+
+  CEDA_mapping <- readxl::read_excel(country_mapping_path,
+                                   sheet = "CEDA_PFU") %>%
+    tibble::tibble() %>%
+    dplyr::select(CEDA_name, `2018`) %>%
+    magrittr::set_colnames(c("Country", "PFU_Country_Code"))
+
   dirs = paste0(dest_file, "/", list.files(path = dest_file), sep = "")
 
-  data <- do.call(rbind, purrr::map(dirs, read_ceda_file))
+  data <- do.call(rbind, purrr::map(dirs, read_ceda_file)) %>%
+    dplyr::left_join(CEDA_mapping, by = "Country") %>%
+    dplyr::relocate(ISO_Country_Code, .after = "Country")
 
 }
 
