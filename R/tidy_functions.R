@@ -49,11 +49,3 @@ read_ceda_files <- function (ceda_metric, ceda_year, data) {
     dplyr::relocate(ISO_Country_Code, .after = "Country")
 
 }
-
-# tmp_2019 <- read_ceda_files(ceda_metric = "tmp", ceda_year = 2019)
-#
-# tmx_2019 <- read_ceda_files(ceda_metric = "tmx", ceda_year = 2019)
-#
-# tmp_2020 <- read_ceda_files(ceda_metric = "tmp", ceda_year = 2020)
-#
-# tmx_2020 <- read_ceda_files(ceda_metric = "tmx", ceda_year = 2020)
