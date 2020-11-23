@@ -1,13 +1,8 @@
-# Loads required packages
-library(RCurl)
-
 #' The function cru_cy_metrics downloads the latest (2020) Climate Research Unit
 #' Country-Level datasets (cru_cy) (http://data.ceda.ac.uk/badc/cru/data/cru_cy/cru_cy_4.04/data)
 #' from CEDA via FTP (ftp://ftp.ceda.ac.uk/badc/cru/data/cru_cy/cru_cy_4.04/data/).
 #' Users must first create an account with CEDA.
-#'
 #' The following metrics are available, and are denoted by three letter codes:
-#'
 #' "cld" = Cloud cover,
 #' "dtr" = Diurnal temperature range,
 #' "frs" = Ground frost frequency,
@@ -25,11 +20,9 @@ library(RCurl)
 #' @param cru_cy_folder the filepath for the data to be downloaded in
 #'
 #' @return
-#' @export
+#' @export down_cru_cy_data
 #'
 #' @examples
-#'
-#' temperature_data <- down_cru_cy_data(username = "JoeBloggs", password = "BirchPyramid7", cru_cy_metric = "tmp", cru_cy_folder = "C:/CEDA Data/CEDA_2020")
 #'
 down_cru_cy_data <- function (username, password, cru_cy_metric, cru_cy_folder) {
 

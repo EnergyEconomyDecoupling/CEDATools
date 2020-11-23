@@ -1,15 +1,11 @@
-# This script contains functions which read the cru_cy raw .per (text) tiles downloaded via FTP from CEDA,
-# tidies them, and combines them into a single tibble
-
-
 #' Establishes a function which reads an individual CEDA .per (text) file
 #'
 #' @param cru_cy_file a file path to a .per text file downloaded from CEDA
 #'
 #' @return a tibble containing climate data for a single country
-#' @export
+#' @export read_cru_cy_file
 #'
-#' @examples actaeon_group_temp_data <- read_cru_cy_file(cru_cy_file = "C:/CEDA Data/CEDA_2020/tmp/crucy.v4.04.1901.2019.Actaeon_Group.tmp.per")
+#' @examples
 #'
 read_cru_cy_file <- function (cru_cy_file) {
   readr::read_table2(cru_cy_file,
@@ -30,9 +26,8 @@ read_cru_cy_file <- function (cru_cy_file) {
 }
 
 
-#' Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble
-#'
-#' Zeke will add more description here.
+#' Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
+#' Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.
 #'
 #' @param cru_cy_folder path to a folder contains cru_cy data files.
 #' @param cru_cy_metric three-letter code used to identify filename to read and write.
@@ -43,9 +38,9 @@ read_cru_cy_file <- function (cru_cy_file) {
 #' and climate data for the selected metric for each of the months,
 #' the mean over each of the four seasons, and a yearly mean.
 #'
-#' @export
+#' @export read_cru_cy_files
 #'
-#' @examples temp_data <- read_cru_cy_file(cru_cy_folder = "C:/CEDA Data", cru_cy_metric = "tmp", cru_cy_year = 2020)
+#' @examples
 #'
 read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/tidy_functions.R
 \name{read_cru_cy_files}
 \alias{read_cru_cy_files}
-\title{Read all CEDA file for a particular metric and bind create a single tibble}
+\title{Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
+Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.}
 \usage{
 read_cru_cy_files(cru_cy_folder, cru_cy_metric, cru_cy_year)
 }
@@ -14,8 +15,15 @@ read_cru_cy_files(cru_cy_folder, cru_cy_metric, cru_cy_year)
 \item{cru_cy_year}{identifies the year of the CEDA data to loaded.}
 }
 \value{
-a tibble with columns
+a tibble with columns containing the CEDA Country name parsed from file names,
+the ISO country code which corresponds to PFU database, the metric read using the function,
+and climate data for the selected metric for each of the months,
+the mean over each of the four seasons, and a yearly mean.
 }
 \description{
-Zeke will add more description here.
+Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
+Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.
+}
+\examples{
+
 }
