@@ -9,7 +9,8 @@
 #' @return a tibble containing climate data for a single country
 #' @export
 #'
-#' @examples
+#' @examples actaeon_group_temp_data <- read_cru_cy_file(cru_cy_file = "C:/CEDA Data/CEDA_2020/tmp/crucy.v4.04.1901.2019.Actaeon_Group.tmp.per")
+#'
 read_cru_cy_file <- function (cru_cy_file) {
   readr::read_table2(cru_cy_file,
                      col_types = readr::cols(YEAR = readr::col_double(),
@@ -44,7 +45,8 @@ read_cru_cy_file <- function (cru_cy_file) {
 #'
 #' @export
 #'
-#' @examples
+#' @examples temp_data <- read_cru_cy_file(cru_cy_folder = "C:/CEDA Data", cru_cy_metric = "tmp", cru_cy_year = 2020)
+#'
 read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 
   dest_file <- file.path(cru_cy_folder, paste0("CEDA_", cru_cy_year), cru_cy_metric)
