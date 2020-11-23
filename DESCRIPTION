@@ -1,21 +1,30 @@
 Package: CEDATools
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions for downloading and tiding CEDA data via FTP in R
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    person(given = "Zeke",
+           family = "Marshall",
+           role = c("aut", "cre"),
+           email = "marshall_zeke@outlook.com",
+           comment = c(ORCID = "0000-0001-9260-7827"))
+Maintainer: Zeke Marshall <marshall_zeke@outlook.com>
+Description: CEDATools provides functions for downloading and tidying 
+    CEDA Climate Research Unit Country-Level data (cru_cy) in R.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Language: en-US
 Imports:
-    magritrr,
+    magrittr,
     readr,
     readxl,
-    RCurl
+    RCurl,
+    tools
 Suggests: 
     covr, 
     PFUSetup,
     testthat
 RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
