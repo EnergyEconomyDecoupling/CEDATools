@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidy_functions.R
 \name{read_cru_cy_file}
 \alias{read_cru_cy_file}
-\title{Establishes a function which reads an individual CEDA .per (text) file}
+\title{Read a single CEDA cru_cy text file}
 \usage{
 read_cru_cy_file(cru_cy_file)
 }

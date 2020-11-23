@@ -1,3 +1,5 @@
+#' Read a single CEDA cru_cy text file
+#'
 #' Establishes a function which reads an individual CEDA .per (text) file
 #'
 #' @param cru_cy_file a file path to a .per text file downloaded from CEDA
@@ -26,6 +28,8 @@ read_cru_cy_file <- function (cru_cy_file) {
 }
 
 
+#' Read all cru_cy text files for a particular metric
+#'
 #' Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
 #' Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.
 #'

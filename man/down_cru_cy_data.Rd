@@ -2,21 +2,7 @@
 % Please edit documentation in R/down_functions.R
 \name{down_cru_cy_data}
 \alias{down_cru_cy_data}
-\title{The function cru_cy_metrics downloads the latest (2020) Climate Research Unit
-Country-Level datasets (cru_cy) (http://data.ceda.ac.uk/badc/cru/data/cru_cy/cru_cy_4.04/data)
-from CEDA via FTP (ftp://ftp.ceda.ac.uk/badc/cru/data/cru_cy/cru_cy_4.04/data/).
-Users must first create an account with CEDA.
-The following metrics are available, and are denoted by three letter codes:
-"cld" = Cloud cover,
-"dtr" = Diurnal temperature range,
-"frs" = Ground frost frequency,
-"pet" = Potential evapotranspiration,
-"pre" = Precipitation,
-"tmn" = Near surface temperature minimum,
-"tmp" = Near surface temperature,
-"tmx" = Near surface temperature maximum,
-"vap" = Vapour pressure,
-"wet" = Wet day frequency}
+\title{Downloads CEDA data via FTP}
 \usage{
 down_cru_cy_data(username, password, cru_cy_metric, cru_cy_folder)
 }

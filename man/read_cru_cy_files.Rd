@@ -2,8 +2,7 @@
 % Please edit documentation in R/tidy_functions.R
 \name{read_cru_cy_files}
 \alias{read_cru_cy_files}
-\title{Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
-Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.}
+\title{Read all cru_cy text files for a particular metric}
 \usage{
 read_cru_cy_files(cru_cy_folder, cru_cy_metric, cru_cy_year)
 }
