@@ -16,9 +16,6 @@ test_that("read_cru_cy_file() works", {
                           "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "MAM",
                           "JJA", "SON", "DJF", "ANN")) == TRUE
               )
-
-
-
 })
 
 
@@ -37,19 +34,4 @@ test_that("read_cru_cy_files() works as expected", {
                           "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP",
                           "OCT", "NOV", "DEC", "MAM", "JJA", "SON", "DJF", "ANN")
                         ) == TRUE)
-
 })
-
-
-# tmp_2019 <- read_cru_cy_files(cru_cy_folder = file.path(PFUSetup::get_abs_paths()$project_path, "Data", "CEDA Data"),
-#                                                         cru_cy_metric = "tmp", cru_cy_year = 2019)
-#
-# tmx_2019 <- read_cru_cy_files(cru_cy_metric = "tmx", cru_cy_year = 2019)
-#
-# tmp_2020 <- read_cru_cy_files(cru_cy_metric = "tmp", cru_cy_year = 2020)
-#
-# tmx_2020 <- read_cru_cy_files(cru_cy_metric = "tmx", cru_cy_year = 2020)
-
-
-
-#####################################################################################################################
