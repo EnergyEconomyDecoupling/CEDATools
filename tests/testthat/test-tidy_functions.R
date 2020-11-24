@@ -30,8 +30,6 @@ test_that("read_cru_cy_files() works as expected", {
   expect_true(unique(tmp_data_2020$Metric) == "tmp")
   expect_true(max(tmp_data_2020$YEAR) == 2019)
   expect_true(identical(colnames(tmp_data_2020),
-                        c("Country", "PFU_Country_Code", "Metric", "YEAR", "JAN",
-                          "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP",
-                          "OCT", "NOV", "DEC", "MAM", "JJA", "SON", "DJF", "ANN")
+                        c("Country", "Metric", "YEAR", "Month", "Value")
                         ) == TRUE)
 })
