@@ -50,20 +50,23 @@ read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 
   dest_file <- file.path(cru_cy_folder, paste0("CEDA_", cru_cy_year), cru_cy_metric)
 
-  country_mapping_path <- paste(PFUSetup::get_abs_paths()$project_path,
-                                "/Mapping/Country_Mapping_2020.xlsx", sep = "")
+  # country_mapping_path <- paste(PFUSetup::get_abs_paths()$project_path,
+  #                               "/Mapping/Country_Mapping_2020.xlsx", sep = "")
 
-  CEDA_mapping <- readxl::read_excel(country_mapping_path,
-                                   sheet = "CEDA_PFU") %>%
-    tibble::tibble() %>%
-    dplyr::select(CEDA_name, `2018`) %>%
-    magrittr::set_colnames(c("Country", "PFU_Country_Code"))
+  # CEDA_mapping <- readxl::read_excel(country_mapping_path,
+  #                                  sheet = "CEDA_PFU") %>%
+  #   tibble::tibble() %>%
+  #   dplyr::select(CEDA_name, `2018`) %>%
+  #   magrittr::set_colnames(c("Country", "PFU_Country_Code"))
 
   dirs <- paste0(dest_file, "/", list.files(path = dest_file), sep = "")
 
   do.call(rbind, purrr::map(dirs, read_cru_cy_file)) %>%
-    dplyr::left_join(CEDA_mapping, by = "Country") %>%
-    dplyr::relocate(PFU_Country_Code, .after = "Country") %>%
-    dplyr::mutate(Metric = cru_cy_metric, .after = "PFU_Country_Code")
+    # dplyr::left_join(CEDA_mapping, by = "Country") %>%
+    # dplyr::relocate(PFU_Country_Code, .after = "Country") %>%
+    dplyr::mutate(Metric = cru_cy_metric, .after = "Country") %>%
+    tidyr::pivot_longer(cols = JAN:ANN,
+                        names_to = "Month",
+                        values_to = "Value")
 
 }
