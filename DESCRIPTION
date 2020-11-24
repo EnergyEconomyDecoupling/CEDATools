@@ -23,7 +23,8 @@ Imports:
     knitr,
     dplyr,
     purrr,
-    tibble
+    tibble,
+    tidyr
 Suggests: 
     covr, 
     PFUSetup,
