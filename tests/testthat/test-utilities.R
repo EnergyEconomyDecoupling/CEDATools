@@ -13,6 +13,7 @@ test_that("sample_ceda_data_path() works correctly", {
   # * All paths for GHA and ZAF and all 3 metrics
   # * Other versions (2021)
   # * Other countries (CEDA names)
+  # * Test for a bad country name
 
   # * Fill rest of description
   # * Use the new path function in all tests

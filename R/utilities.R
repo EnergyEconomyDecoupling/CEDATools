@@ -16,7 +16,10 @@ sample_ceda_data_path <- function(country = c("Ghana", "South_Africa"),
                                   metric = c("tmp", "tmn", "tmx"),
                                   version = 2020) {
 
-  # Need to check that the value of metric is one of the options given.
+  # Need to check that the value of country  is one of the options given.
+  country <- match.arg(country)
+
+    # Need to check that the value of metric is one of the options given.
   metric <- match.arg(metric)
 
   # Ensure that version year is correct.
