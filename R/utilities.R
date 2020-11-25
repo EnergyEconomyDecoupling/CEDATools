@@ -17,6 +17,7 @@ sample_ceda_data_path <- function(country = c("Ghana", "South_Africa"),
                                   version = 2020) {
 
   # Need to check that the value of metric is one of the options given.
+  match.arg("metric")
 
   # Ensure that version year is correct.
   assertthat::assert_that(version == 2020, msg = "Only 2020 is supported in sample_ceda_data_path()")

@@ -5,8 +5,11 @@ test_that("sample_ceda_data_path() works correctly", {
   expect_true(endsWith(res, expected))
 
 
+
+  expect_error(sample_ceda_data_path(metric = "xx"),
+               regexp = "'arg' should be one of “tmp”, “tmn”, “tmx”")
+
   # **** Zeke build better tests ****
-  # * metric = "xx": should fail expect_error()
   # * All paths for GHA and ZAF and all 3 metrics
   # * Other versions (2021)
   # * Other countries (CEDA names)
