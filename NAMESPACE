@@ -3,3 +3,4 @@
 export(create_agg_cru_cy_df)
 export(read_cru_cy_file)
 export(read_cru_cy_files)
+export(sample_ceda_data_path)
