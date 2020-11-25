@@ -33,3 +33,19 @@ test_that("read_cru_cy_files() works as expected", {
                         c("Country", "Metric", "YEAR", "Month", "Value")
                         ) == TRUE)
 })
+
+test_that("read_cru_cy_files() works as expected", {
+
+  tmp_tmn_tmx_data_2020 <- create_agg_cru_cy_df(agg_cru_cy_folder = file.path(PFUSetup::get_abs_paths()[["project_path"]], "Data", "CEDA Data"),
+                                                agg_cru_cy_metrics = c("tmp", "tmn", "tmx"),
+                                                agg_cru_cy_year = 2020)
+
+  expect_true(!is.null(tmp_tmn_tmx_data_2020))
+  expect_equal(object = unique(tmp_tmn_tmx_data_2020$Metric),
+               expected = c("tmp", "tmn", "tmx"))
+  expect_true(max(tmp_tmn_tmx_data_2020$YEAR) == 2019)
+  expect_true(identical(colnames(tmp_tmn_tmx_data_2020),
+                        c("Country", "Metric", "YEAR", "Month", "Value")
+                        ) == TRUE)
+})
+

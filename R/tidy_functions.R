@@ -31,16 +31,13 @@ read_cru_cy_file <- function (cru_cy_file) {
 #' Read all cru_cy text files for a particular metric
 #'
 #' Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
-#' Data is drawn from a directory supplied by the user, likely creatred through the down_cru_cy_files function.
+#' Data is drawn from a directory supplied by the user, likely created through the down_cru_cy_files function.
 #'
-#' @param cru_cy_folder path to a folder contains cru_cy data files.
+#' @param cru_cy_folder path to a folder contains all cru_cy data folders.
 #' @param cru_cy_metric three-letter code used to identify filename to read and write.
 #' @param cru_cy_year identifies the year of the CEDA data to loaded.
 #'
-#' @return a tibble with columns containing the CEDA Country name parsed from file names,
-#' the ISO country code which corresponds to PFU database, the metric read using the function,
-#' and climate data for the selected metric for each of the months,
-#' the mean over each of the four seasons, and a yearly mean.
+#' @return a tibble with five columns: Country, Metric, Year, Month, Value.
 #'
 #' @export read_cru_cy_files
 #'
@@ -50,23 +47,60 @@ read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 
   dest_file <- file.path(cru_cy_folder, paste0("CEDA_", cru_cy_year), cru_cy_metric)
 
-  # country_mapping_path <- paste(PFUSetup::get_abs_paths()$project_path,
-  #                               "/Mapping/Country_Mapping_2020.xlsx", sep = "")
-
-  # CEDA_mapping <- readxl::read_excel(country_mapping_path,
-  #                                  sheet = "CEDA_PFU") %>%
-  #   tibble::tibble() %>%
-  #   dplyr::select(CEDA_name, `2018`) %>%
-  #   magrittr::set_colnames(c("Country", "PFU_Country_Code"))
-
   dirs <- paste0(dest_file, "/", list.files(path = dest_file), sep = "")
 
-  do.call(rbind, purrr::map(dirs, read_cru_cy_file)) %>%
-    # dplyr::left_join(CEDA_mapping, by = "Country") %>%
-    # dplyr::relocate(PFU_Country_Code, .after = "Country") %>%
+  do.call(rbind, purrr::map(dirs, CEDATools::read_cru_cy_file)) %>%
     dplyr::mutate(Metric = cru_cy_metric, .after = "Country") %>%
     tidyr::pivot_longer(cols = JAN:ANN,
                         names_to = "Month",
                         values_to = "Value")
 
 }
+
+
+
+#' Create a dataframe containing multiple cru_cy metrics
+#'
+#' Reads all cru_cy (Climate Research Unit Country) files for a multiple metrics and binds to create a single tibble.
+#' Data is drawn from a directory supplied by the user, likely created through the down_cru_cy_files function.
+#'
+#' @param agg_cru_cy_folder path to a folder contains all cru_cy data folders,
+#' passed to the `cru_cy_folder` argument in `read_cru_cy_files`
+#' @param agg_cru_cy_metrics a character string of metrics which is iterated over with `read_cru_cy_files`
+#' using `lapply`
+#' @param agg_cru_cy_year identifies the year of the CEDA data to loaded,
+#' passed to the `cru_cy_year` argument in `read_cru_cy_files`
+#'
+#' @return a tibble with five columns: Country, Metric, Year, Month, Value.
+#' In contrast to `read_cru_cy_files` there may be multiple metrics if `length(agg_cru_cy_metrics) > 1`.
+#'
+#' @export create_agg_cru_cy_df
+#'
+#' @examples
+create_agg_cru_cy_df <- function(agg_cru_cy_folder, agg_cru_cy_metrics, agg_cru_cy_year) {
+
+  agg_cru_cy_df <- lapply(agg_cru_cy_metrics, # sapply creates a 5*3 matrix with nested lists
+                          CEDATools::read_cru_cy_files,
+                          cru_cy_folder = agg_cru_cy_folder,
+                          cru_cy_year = agg_cru_cy_year) %>%
+    data.table::rbindlist() %>%
+    tibble::as_tibble()
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
