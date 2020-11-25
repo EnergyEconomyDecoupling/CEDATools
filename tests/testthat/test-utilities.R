@@ -14,4 +14,8 @@ test_that("sample_ceda_data_path() works correctly", {
   # * Other versions (2021)
   # * Other countries (CEDA names)
 
+  # * Fill rest of description
+  # * Use the new path function in all tests
+  #   to become independent of Dropbox
+
 })
