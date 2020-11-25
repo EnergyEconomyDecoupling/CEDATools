@@ -79,7 +79,7 @@ read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 #' @examples
 create_agg_cru_cy_df <- function(agg_cru_cy_folder, agg_cru_cy_metrics, agg_cru_cy_year) {
 
-  agg_cru_cy_df <- lapply(agg_cru_cy_metrics, # sapply creates a 5*3 matrix with nested lists
+  agg_cru_cy_df <- lapply(agg_cru_cy_metrics,
                           CEDATools::read_cru_cy_files,
                           cru_cy_folder = agg_cru_cy_folder,
                           cru_cy_year = agg_cru_cy_year) %>%
