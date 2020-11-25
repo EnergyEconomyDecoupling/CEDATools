@@ -34,7 +34,7 @@ test_that("read_cru_cy_files() works as expected", {
                         ) == TRUE)
 })
 
-test_that("read_cru_cy_files() works as expected", {
+test_that("create_agg_cru_cy_df() works as expected", {
 
   tmp_tmn_tmx_data_2020 <- create_agg_cru_cy_df(agg_cru_cy_folder = file.path(PFUSetup::get_abs_paths()[["project_path"]], "Data", "CEDA Data"),
                                                 agg_cru_cy_metrics = c("tmp", "tmn", "tmx"),
