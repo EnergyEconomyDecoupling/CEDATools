@@ -1,8 +1,8 @@
 Package: CEDATools
 Type: Package
 Title: Functions for downloading and tiding CEDA data via FTP in R
-Version: 0.1.0
-Date: 2020-11-25
+Version: 0.1.1
+Date: 2020-11-26
 Authors@R: 
     person(given = "Zeke",
            family = "Marshall",
