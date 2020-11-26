@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Page not found (404) • CEDATools</title>
+<title>Create a list of file paths to CEDA cru_cy files — ceda_data_path • CEDATools</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Page not found (404)" />
+<meta property="og:title" content="Create a list of file paths to CEDA cru_cy files — ceda_data_path" />
+<meta property="og:description" content="Create a list of file paths to CEDA cru_cy files" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">CEDATools</a>
+        <a class="navbar-link" href="../index.html">CEDATools</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
@@ -78,16 +79,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -103,23 +104,74 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Page not found (404)</h1>
+    <h1>Create a list of file paths to CEDA cru_cy files</h1>
+    
+    <div class="hidden name"><code>ceda_data_path.Rd</code></div>
     </div>
 
-Content not found. Please use links in the navbar.
+    <div class="ref-description">
+    <p>Create a list of file paths to CEDA cru_cy files</p>
+    </div>
+
+    <pre class="usage"><span class='fu'>ceda_data_path</span><span class='op'>(</span>
+  ceda_data_folder <span class='op'>=</span> <span class='fu'><a href='sample_ceda_data_folder.html'>sample_ceda_data_folder</a></span><span class='op'>(</span><span class='op'>)</span>,
+  <span class='va'>country</span>,
+  metric <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cld"</span>, <span class='st'>"dtr"</span>, <span class='st'>"frs"</span>, <span class='st'>"pet"</span>, <span class='st'>"pre"</span>, <span class='st'>"tmn"</span>, <span class='st'>"tmp"</span>, <span class='st'>"tmx"</span>, <span class='st'>"vap"</span>, <span class='st'>"wet"</span><span class='op'>)</span>,
+  version <span class='op'>=</span> <span class='fl'>2020</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ceda_data_folder</th>
+      <td><p>The file path to the folder containing the cru_cy CEDA Data,
+specificially a folder named "CEDA Data".
+By default this is set to <code>sample_ceda_data_folder</code>,
+but any file path leading to the "CEDA Data" folder can be used.
+Note that the data must be present in a folder in CEDA Data/CEDA_2020
+with the corresponding metric code.</p></td>
+    </tr>
+    <tr>
+      <th>country</th>
+      <td><p>Any of the countries present in cru_cy CEDA files,
+note that some country names are unique to CEDA,
+as they are taken from the file names, and contain underscores,
+and abbreviations such as "Isl" for "Islands".</p></td>
+    </tr>
+    <tr>
+      <th>metric</th>
+      <td><p>One of:"cld" = Cloud cover,
+"dtr" = Diurnal temperature range,
+"frs" = Ground frost frequency,
+"pet" = Potential evapotranspiration,
+"pre" = Precipitation,
+"tmn" = Near surface temperature minimum,
+"tmp" = Near surface temperature,
+"tmx" = Near surface temperature maximum,
+"vap" = Vapour pressure,
+"wet" = Wet day frequency</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p>An integer representing the year in which CEDA data were released.
+E.g., <code>2020</code> means data up through year 2019 that were released in the year 2020.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a list of file paths for selected cru_cy CEDA text files (.per), determined by metric and country.</p>
 
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>
