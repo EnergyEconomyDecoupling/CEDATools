@@ -6,7 +6,6 @@
 #'         This path is unique indpendent of the user/machine.
 #' @export
 #'
-#' @examples
 sample_ceda_data_folder <- function() {
   system.file(file.path("extdata", "CEDA Data"), package = "CEDATools")
 }
@@ -18,7 +17,7 @@ sample_ceda_data_folder <- function() {
 #'                         specificially a folder named "CEDA Data".
 #'                         By default this is set to `sample_ceda_data_folder`,
 #'                         but any file path leading to the "CEDA Data" folder can be used.
-#'                         Note that the data must be present in a folder in CEDA Data/CEDA_<version>
+#'                         Note that the data must be present in a folder in CEDA Data/CEDA_2020
 #'                         with the corresponding metric code.
 #' @param country Any of the countries present in cru_cy CEDA files,
 #'                note that some country names are unique to CEDA,
@@ -40,14 +39,13 @@ sample_ceda_data_folder <- function() {
 #' @return a list of file paths for selected cru_cy CEDA text files (.per), determined by metric and country.
 #' @export
 #'
-#' @examples
 ceda_data_path <- function(ceda_data_folder = sample_ceda_data_folder(),
                            country, # It may be good to create a csv with CEDA cru_cy country names, and include it in extdata
                            metric = c("cld", "dtr", "frs", "pet", "pre", "tmn", "tmp", "tmx", "vap", "wet"),
                            version = 2020) {
 
   # Need to check that the value of metric is one of the options given.
-  metric <- match.arg(metric)
+  metric <- match.arg(metric, several.ok = TRUE)
 
   # Build the file paths as we go.
   fn_prefix <- "crucy.v4.04.1901." # This is a 2020 string. May need to update later.
@@ -81,13 +79,11 @@ ceda_data_path <- function(ceda_data_folder = sample_ceda_data_folder(),
 #'
 #' @export
 #'
-#' @examples
-#'
 sample_ceda_data_path <- function(country = c("Ghana", "South_Africa"),
                                   metric = c("tmp", "tmn", "tmx"),
                                   version = 2020) {
 
-  # Need to check that the value of country  is one of the options given.
+  # Need to check that the value of country is one of the options given.
   country <- match.arg(country, several.ok = TRUE)
 
   # Need to check that the value of metric is one of the options given.
@@ -102,4 +98,3 @@ sample_ceda_data_path <- function(country = c("Ghana", "South_Africa"),
                  metric = metric,
                  version = version)
 }
-
