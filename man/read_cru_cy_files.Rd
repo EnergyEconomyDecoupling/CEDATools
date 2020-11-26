@@ -20,6 +20,3 @@ a tibble with five columns: Country, Metric, Year, Month, Value.
 Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
 Data is drawn from a directory supplied by the user, likely created through the down_cru_cy_files function.
 }
-\examples{
-
-}

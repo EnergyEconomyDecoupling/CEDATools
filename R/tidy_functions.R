@@ -7,8 +7,6 @@
 #' @return a tibble containing climate data for a single country
 #' @export read_cru_cy_file
 #'
-#' @examples
-#'
 read_cru_cy_file <- function (cru_cy_file) {
   readr::read_table2(cru_cy_file,
                      col_types = readr::cols(YEAR = readr::col_double(),
@@ -40,8 +38,6 @@ read_cru_cy_file <- function (cru_cy_file) {
 #' @return a tibble with five columns: Country, Metric, Year, Month, Value.
 #'
 #' @export read_cru_cy_files
-#'
-#' @examples
 #'
 read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 
@@ -76,7 +72,6 @@ read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
 #'
 #' @export create_agg_cru_cy_df
 #'
-#' @examples
 create_agg_cru_cy_df <- function(agg_cru_cy_folder, agg_cru_cy_metrics, agg_cru_cy_year) {
 
   agg_cru_cy_df <- lapply(agg_cru_cy_metrics,
