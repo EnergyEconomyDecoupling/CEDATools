@@ -15,6 +15,3 @@ a tibble containing climate data for a single country
 \description{
 Establishes a function which reads an individual CEDA .per (text) file
 }
-\examples{
-
-}
