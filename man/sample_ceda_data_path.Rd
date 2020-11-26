@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{sample_ceda_data_path}
 \alias{sample_ceda_data_path}
-\title{Title}
+\title{Create a list of file paths to sample CEDA cru_cy files bundled in CEDATools}
 \usage{
 sample_ceda_data_path(
   country = c("Ghana", "South_Africa"),
@@ -11,16 +11,21 @@ sample_ceda_data_path(
 )
 }
 \arguments{
-\item{metric}{One of "tmp" (for mean monthly temperature),
-"tmn" (for mean monthly daily minimum temperature), or
-"tmx" (for mean monthly daily maximum temperature).}
+\item{country}{One of either "Ghana" or "South Africa",
+the two countries for sample data is bundled in CEDATools}
+
+\item{metric}{One of:"tmn" = Near surface temperature minimum,
+"tmp" = Near surface temperature,
+"tmx" = Near surface temperature maximum.
+The three metrics for which there is sample data bundled in CEDATools}
 
 \item{version}{An integer representing the year in which CEDA data were released.
 E.g., \code{2020} means data up through year 2019 that were released in the year 2020.}
 }
 \value{
-
+A list of paths for the selected sample data,
+determined by the sample metric and sample countries selected.
 }
 \description{
-Title
+Create a list of file paths to sample CEDA cru_cy files bundled in CEDATools
 }
