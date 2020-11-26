@@ -1,3 +1,12 @@
+# CEDATools 0.1.0 (2020-11-26)
+
+* Bundled sample data in package
+
+* All tests in tidy_functions.R are based on sample data
+
+* Created utility_functions.R which contains functions to establish paths to sample data
+
+
 # CEDATools 0.1.0 (2020-11-25)
 
 * Intial release
