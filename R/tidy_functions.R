@@ -3,26 +3,21 @@
 #' Establishes a function which reads an individual CEDA .per (text) file
 #'
 #' @param cru_cy_file a file path to a .per text file downloaded from CEDA
+#' @param year_col the column name "YEAR".
 #'
 #' @return a tibble containing climate data for a single country
 #' @export read_cru_cy_file
 #'
-read_cru_cy_file <- function (cru_cy_file) {
-  readr::read_table2(cru_cy_file,
-                     col_types = readr::cols(YEAR = readr::col_double(),
-                                             JAN = readr::col_double(), FEB = readr::col_double(),
-                                             MAR = readr::col_double(), APR = readr::col_double(),
-                                             MAY = readr::col_double(), JUN = readr::col_double(),
-                                             JUL = readr::col_double(), AUG = readr::col_double(),
-                                             SEP = readr::col_double(), OCT = readr::col_double(),
-                                             NOV = readr::col_double(), DEC = readr::col_double(),
-                                             MAM = readr::col_double(), JJA = readr::col_double(),
-                                             SON = readr::col_double(), DJF = readr::col_double(),
-                                             ANN = readr::col_double()
-                     ),
-                     skip = 3) %>%
-    tibble::tibble() %>%
-    dplyr::mutate(Country = substr(basename(cru_cy_file), 23, nchar(basename(cru_cy_file))-8), .before = YEAR)
+read_cru_cy_file <- function (cru_cy_file,
+                              year_col = CEDATools::cru_cy_colnames$YEAR
+                              ) {
+
+  readr::read_table(file = cru_cy_file,
+                    col_types = readr::cols(.default = readr::col_double()),
+                    skip = 3) |>
+    tibble::tibble() |>
+    dplyr::mutate(Country = substr(basename(cru_cy_file), 23, nchar(basename(cru_cy_file))-8), .before = year_col)
+
 }
 
 
@@ -34,20 +29,24 @@ read_cru_cy_file <- function (cru_cy_file) {
 #' @param cru_cy_folder path to a folder contains all cru_cy data folders.
 #' @param cru_cy_metric three-letter code used to identify filename to read and write.
 #' @param cru_cy_year identifies the year of the CEDA data to loaded.
+#' @param jan_col the column name "JAN".
+#' @param ann_col the column name "ANN".
 #'
 #' @return a tibble with five columns: Country, Metric, Year, Month, Value.
 #'
 #' @export read_cru_cy_files
 #'
-read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year) {
+read_cru_cy_files <- function(cru_cy_folder, cru_cy_metric, cru_cy_year,
+                              jan_col = CEDATools::cru_cy_colnames$JAN,
+                              ann_col = CEDATools::cru_cy_colnames$ANN) {
 
   dest_file <- file.path(cru_cy_folder, paste0("CEDA_", cru_cy_year), cru_cy_metric)
 
   dirs <- paste0(dest_file, "/", list.files(path = dest_file), sep = "")
 
-  do.call(rbind, purrr::map(dirs, CEDATools::read_cru_cy_file)) %>%
-    dplyr::mutate(Metric = cru_cy_metric, .after = "Country") %>%
-    tidyr::pivot_longer(cols = JAN:ANN,
+  do.call(rbind, purrr::map(dirs, CEDATools::read_cru_cy_file)) |>
+    dplyr::mutate(Metric = cru_cy_metric, .after = "Country") |>
+    tidyr::pivot_longer(cols = jan_col:ann_col,
                         names_to = "Month",
                         values_to = "Value")
 
@@ -77,8 +76,8 @@ create_agg_cru_cy_df <- function(agg_cru_cy_folder, agg_cru_cy_metrics, agg_cru_
   agg_cru_cy_df <- lapply(agg_cru_cy_metrics,
                           CEDATools::read_cru_cy_files,
                           cru_cy_folder = agg_cru_cy_folder,
-                          cru_cy_year = agg_cru_cy_year) %>%
-    data.table::rbindlist() %>%
+                          cru_cy_year = agg_cru_cy_year) |>
+    data.table::rbindlist() |>
     tibble::as_tibble()
 
 }

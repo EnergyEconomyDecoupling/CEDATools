@@ -12,7 +12,7 @@ Authors@R:
 Maintainer: Zeke Marshall <marshall_zeke@outlook.com>
 Description: CEDATools provides functions for downloading and tidying 
     CEDA Climate Research Unit Country-Level data (cru_cy) in R.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Language: en-US
@@ -36,3 +36,5 @@ Suggests:
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)

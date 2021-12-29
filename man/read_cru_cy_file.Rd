@@ -4,10 +4,12 @@
 \alias{read_cru_cy_file}
 \title{Read a single CEDA cru_cy text file}
 \usage{
-read_cru_cy_file(cru_cy_file)
+read_cru_cy_file(cru_cy_file, year_col = CEDATools::cru_cy_colnames$YEAR)
 }
 \arguments{
 \item{cru_cy_file}{a file path to a .per text file downloaded from CEDA}
+
+\item{year_col}{the column name "YEAR".}
 }
 \value{
 a tibble containing climate data for a single country
