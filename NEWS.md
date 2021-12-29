@@ -1,4 +1,8 @@
-# CEDATools 0.1.0 (2020-11-26)
+# CEDATools 0.1.2 (2021-12-29)
+
+* Ensuring all checks pass.
+
+# CEDATools 0.1.1 (2020-11-26)
 
 * Bundled sample data in package
 

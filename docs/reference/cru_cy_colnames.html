@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read all cru_cy text files for a particular metric — read_cru_cy_files • CEDATools</title>
+<title>cru_cy column names — cru_cy_colnames • CEDATools</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Read all cru_cy text files for a particular metric — read_cru_cy_files" />
-<meta property="og:description" content="Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
-Data is drawn from a directory supplied by the user, likely created through the down_cru_cy_files function." />
+<meta property="og:title" content="cru_cy column names — cru_cy_colnames" />
+<meta property="og:description" content="A string list containing column names of the raw CEDA cru_cy data." />
 
 
 
@@ -107,53 +106,99 @@ Data is drawn from a directory supplied by the user, likely created through the 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read all cru_cy text files for a particular metric</h1>
+    <h1>cru_cy column names</h1>
     
-    <div class="hidden name"><code>read_cru_cy_files.Rd</code></div>
+    <div class="hidden name"><code>cru_cy_colnames.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Read all cru_cy (Climate Research Unit Country) files for a particular metric and bind to create a single tibble.
-Data is drawn from a directory supplied by the user, likely created through the down_cru_cy_files function.</p>
+    <p>A string list containing column names of the raw CEDA cru_cy data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_cru_cy_files</span><span class='op'>(</span>
-  <span class='va'>cru_cy_folder</span>,
-  <span class='va'>cru_cy_metric</span>,
-  <span class='va'>cru_cy_year</span>,
-  jan_col <span class='op'>=</span> <span class='fu'>CEDATools</span><span class='fu'>::</span><span class='va'><a href='cru_cy_colnames.html'>cru_cy_colnames</a></span><span class='op'>$</span><span class='va'>JAN</span>,
-  ann_col <span class='op'>=</span> <span class='fu'>CEDATools</span><span class='fu'>::</span><span class='va'><a href='cru_cy_colnames.html'>cru_cy_colnames</a></span><span class='op'>$</span><span class='va'>ANN</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>cru_cy_colnames</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>cru_cy_folder</th>
-      <td><p>path to a folder contains all cru_cy data folders.</p></td>
-    </tr>
-    <tr>
-      <th>cru_cy_metric</th>
-      <td><p>three-letter code used to identify filename to read and write.</p></td>
-    </tr>
-    <tr>
-      <th>cru_cy_year</th>
-      <td><p>identifies the year of the CEDA data to loaded.</p></td>
-    </tr>
-    <tr>
-      <th>jan_col</th>
-      <td><p>the column name "JAN".</p></td>
-    </tr>
-    <tr>
-      <th>ann_col</th>
-      <td><p>the column name "ANN".</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>a tibble with five columns: Country, Metric, Year, Month, Value.</p>
+    <p>A string list with 18 entries.</p><dl>
+<dt>YEAR</dt><dd><p>The string "YEAR", representing the year represnted in the data.</p></dd>
+<dt>JAN</dt><dd><p>The string "JAN", representing a time period consisting of the month January.</p></dd>
+<dt>FEB</dt><dd><p>The string "FEB", representing a time period consisting of the month February.</p></dd>
+<dt>MAR</dt><dd><p>The string "MAR", representing a time period consisting of the month March.</p></dd>
+<dt>APR</dt><dd><p>The string "APR", representing a time period consisting of the month April.</p></dd>
+<dt>MAY</dt><dd><p>The string "MAY", representing a time period consisting of the month May.</p></dd>
+<dt>JUN</dt><dd><p>The string "JUN", representing a time period consisting of the month June.</p></dd>
+<dt>JUL</dt><dd><p>The string "JUL", representing a time period consisting of the month July.</p></dd>
+<dt>AUG</dt><dd><p>The string "AUG", representing a time period consisting of the month August.</p></dd>
+<dt>SEP</dt><dd><p>The string "SEP", representing a time period consisting of the month September.</p></dd>
+<dt>OCT</dt><dd><p>The string "OCT", representing a time period consisting of the month October.</p></dd>
+<dt>NOV</dt><dd><p>The string "NOV", representing a time period consisting of the month November.</p></dd>
+<dt>DEC</dt><dd><p>The string "DEC", representing a time period consisting of the month December.</p></dd>
+<dt>MAM</dt><dd><p>The string "MAM", representing a time period consisting of the months of March, April, and May.</p></dd>
+<dt>JJA</dt><dd><p>The string "JJA", representing a time period consisting of the months of June, July, and August</p></dd>
+<dt>SON</dt><dd><p>The string "SON", representing a time period consisting of the months of September, October, and November.</p></dd>
+<dt>DJF</dt><dd><p>The string "DJF", representing a time period consisting of the months of December, Janaury, and February.</p></dd>
+<dt>ANN</dt><dd><p>The string "ANN", representing a time period consisting of the full year.</p></dd>
 
+</dl>
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>cru_cy_colnames</span>
+</div><div class='output co'>#&gt; $YEAR
+#&gt; [1] "YEAR"
+#&gt; 
+#&gt; $JAN
+#&gt; [1] "JAN"
+#&gt; 
+#&gt; $FEB
+#&gt; [1] "FEB"
+#&gt; 
+#&gt; $MAR
+#&gt; [1] "MAR"
+#&gt; 
+#&gt; $APR
+#&gt; [1] "APR"
+#&gt; 
+#&gt; $MAY
+#&gt; [1] "MAY"
+#&gt; 
+#&gt; $JUN
+#&gt; [1] "JUN"
+#&gt; 
+#&gt; $JUL
+#&gt; [1] "JUL"
+#&gt; 
+#&gt; $AUG
+#&gt; [1] "AUG"
+#&gt; 
+#&gt; $SEP
+#&gt; [1] "SEP"
+#&gt; 
+#&gt; $OCT
+#&gt; [1] "OCT"
+#&gt; 
+#&gt; $NOV
+#&gt; [1] "NOV"
+#&gt; 
+#&gt; $DEC
+#&gt; [1] "DEC"
+#&gt; 
+#&gt; $MAM
+#&gt; [1] "MAM"
+#&gt; 
+#&gt; $JJA
+#&gt; [1] "JJA"
+#&gt; 
+#&gt; $SON
+#&gt; [1] "SON"
+#&gt; 
+#&gt; $DJF
+#&gt; [1] "DJF"
+#&gt; 
+#&gt; $ANN
+#&gt; [1] "ANN"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

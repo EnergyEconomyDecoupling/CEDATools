@@ -55,11 +55,11 @@ ceda_data_path <- function(ceda_data_folder = sample_ceda_data_folder(),
 
   fp_with_metric <- lapply(metric, FUN = function(m) {
     file.path(m, paste0(fn_prefix_with_country, m, ".per"))
-  }) %>% unlist()
+  }) |> unlist()
 
   lapply(fp_with_metric, FUN = function(fpwm) {
     file.path(ceda_data_folder, paste0("CEDA_", version), fpwm)
-  }) %>% unlist()
+  }) |> unlist()
 
 }
 

@@ -1,8 +1,8 @@
 Package: CEDATools
 Type: Package
 Title: Functions for downloading and tiding CEDA data via FTP in R
-Version: 0.1.1
-Date: 2020-11-26
+Version: 0.1.2
+Date: 2021-12-29
 Authors@R: 
     person(given = "Zeke",
            family = "Marshall",
@@ -12,7 +12,7 @@ Authors@R:
 Maintainer: Zeke Marshall <marshall_zeke@outlook.com>
 Description: CEDATools provides functions for downloading and tidying 
     CEDA Climate Research Unit Country-Level data (cru_cy) in R.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Language: en-US
@@ -33,6 +33,8 @@ Suggests:
     PFUSetup,
     testthat,
     RCurl
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
