@@ -1,8 +1,8 @@
 Package: CEDATools
 Type: Package
 Title: Functions for downloading and tiding CEDA data via FTP in R
-Version: 0.1.1
-Date: 2020-11-26
+Version: 0.1.2
+Date: 2020-12-29
 Authors@R: 
     person(given = "Zeke",
            family = "Marshall",
@@ -33,7 +33,7 @@ Suggests:
     PFUSetup,
     testthat,
     RCurl
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Depends: 
