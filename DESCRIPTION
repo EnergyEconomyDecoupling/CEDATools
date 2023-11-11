@@ -33,7 +33,7 @@ Suggests:
     PFUSetup,
     testthat,
     RCurl
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Depends: 
